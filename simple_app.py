@@ -1,57 +1,38 @@
 import streamlit as st
+
+st.title("Real Estate AVM Dashboard - Test")
+st.write("Testing library imports...")
+
+# Test basic imports first
+st.write("Importing pandas and numpy...")
 import pandas as pd
 import numpy as np
+st.success("✅ pandas and numpy successfully imported!")
 
-st.title("Real Estate AVM Dashboard - Simple Version")
-st.write("Testing basic functionality...")
-
-# Test matplotlib import
+# Test matplotlib separately 
+st.write("Importing matplotlib...")
 try:
     import matplotlib.pyplot as plt
-    import seaborn as sns
+    st.success("✅ matplotlib successfully imported!")
     
     # Create a simple matplotlib plot
-    st.subheader("Matplotlib Test")
     fig, ax = plt.subplots()
-    x = np.linspace(0, 10, 100)
-    ax.plot(x, np.sin(x))
+    ax.plot([1, 2, 3, 4], [1, 4, 9, 16])
     st.pyplot(fig)
-    
-    st.success("✅ Matplotlib is working!")
 except Exception as e:
-    st.error(f"❌ Matplotlib error: {str(e)}")
+    st.error(f"❌ matplotlib error: {str(e)}")
 
-# Test plotly
+# Test all other imports
+st.write("Importing other libraries...")
 try:
+    import seaborn as sns
     import plotly.express as px
-    
-    st.subheader("Plotly Test")
-    df = px.data.iris()
-    fig = px.scatter(df, x="sepal_width", y="sepal_length", color="species")
-    st.plotly_chart(fig)
-    
-    st.success("✅ Plotly is working!")
+    # Only import what's needed
+    import joblib
+    st.success("✅ All other libraries successfully imported!")
 except Exception as e:
-    st.error(f"❌ Plotly error: {str(e)}")
+    st.error(f"❌ Error importing other libraries: {str(e)}")
 
-# Test if basic dataframe manipulation works
-st.subheader("DataFrame Test")
-data = {
-    'property_id': [1001, 1002, 1003],
-    'address': ['123 Main St', '456 Oak Ave', '789 Pine Rd'],
-    'price': [750000, 950000, 620000]
-}
-df = pd.DataFrame(data)
-st.dataframe(df)
-
-st.subheader("System Info")
+st.write("System info:")
 import sys
-st.write(f"Python version: {sys.version}")
-st.write(f"Pandas version: {pd.__version__}")
-st.write(f"NumPy version: {np.__version__}")
-try:
-    st.write(f"Matplotlib version: {plt.__version__}")
-except:
-    st.write("Matplotlib not available")
-
-st.success("Basic test complete!")
+st.info(f"Python version: {sys.version}")
