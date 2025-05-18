@@ -11,4 +11,4 @@ An interactive Streamlit dashboard providing advanced property valuation, profit
 ## How to Run
 1. Clone this repository
 2. Install requirements: `pip install -r requirements.txt`
-3. Run the app: `streamlit run app.py`
+3. Run the app: `avm_streamlit run avm_streamlit_app.py`
